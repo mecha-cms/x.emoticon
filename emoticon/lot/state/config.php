@@ -23,10 +23,5 @@ return [
         'tongue' => ':p :P 😋 😛 😜 😝',
         'wink' => ';) 😉',
         'wonder' => ':\ :/ 🤔'
-    ],
-    'hooks' => [
-        '*.content',
-        '*.description',
-        '*.title'
     ]
 ];
