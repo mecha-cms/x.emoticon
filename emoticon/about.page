@@ -3,12 +3,12 @@ title: Emoticon
 description: Emoticon using icon fonts.
 author: Taufik Nurrohman
 type: Markdown
-version: 2.0.1
+version: 2.2.0
 ...
 
 This plugin will recognize smiley patterns (which you can also set it yourself) into graphical smiley icons. Icon font credit to [Icomoon](http://icomoon.io "IcoMoon – Custom Built and Crisp Icon Fonts").
 
-Open `lot\extend\plugin\lot\worker\emoticon\lot\state\config.php` to configure:
+Open `lot\state\config.php` to configure:
 
 ~~~ .php
 return [
@@ -40,7 +40,7 @@ return [
 
 Any pattern defined in the array value, plus a `:‌array_key‌:`, will be replaced by HTML `<i class="emoticon:array_key"></i>` element. Any pattern found in the HTML element (as a tag name, attribute name or value) will be ignored. Any pattern found in the content of HTML `<code>`, `<kbd>`, `<pre>`, `<script>`, `<style>`, `<textarea>` will be ignored.
 
-You might also be interested to these links:
+You might also interested with these links:
 
  - [Wikipedia – List of Emoticons](http://en.wikipedia.org/wiki/List_of_emoticons "List of Emoticons")
  - [All Japanese Emoticons](http://japaneseemoticons.net/all-japanese-emoticons "Over 2,500 Japanese Emoticons All on One Page!")
