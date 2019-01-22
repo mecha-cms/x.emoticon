@@ -6,7 +6,7 @@ namespace fn {
     $i = $state['type'] ?? 0;
     if (!empty($state['replace'])) {
         foreach ($state['replace'] as $k => $v) {
-            $replace[$k . '-' . $i] = array_merge(explode(' ', trim($v)), [':' . $k . ':']);
+            $replace[$k . '-' . $i] = \array_merge(\explode(' ', \trim($v)), [':' . $k . ':']);
         }
     }
     \Lot::set('_emoticon', $replace);
@@ -14,10 +14,10 @@ namespace fn {
         $out = "";
         $skip = 0;
         $replace = \Lot::get('_emoticon');
-        foreach (preg_split('#(<[^<>]+?>)#', $content, null, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE) as $v) {
-            if ($v && $v[0] === '<' && substr($v, -1) === '>') {
+        foreach (\preg_split('#(<[^<>]+?>)#', $content, null, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_DELIM_CAPTURE) as $v) {
+            if ($v && $v[0] === '<' && \substr($v, -1) === '>') {
                 $out .= $v; // Is a HTML tag, skip!
-                if (preg_match('#^<(?:code|kbd|pre|script|style|textarea)\b#', $v)) {
+                if (\preg_match('#^<(?:code|kbd|pre|script|style|textarea)\b#', $v)) {
                     $skip = 1;
                 } else if ($v[1] === '/') {
                     $skip = 0;
@@ -39,10 +39,10 @@ namespace fn {
 
 namespace fn\emoticon {
     function replace($in, $lot) {
-        $in = str_replace('://', ':' . X . '//', $in); // Maybe an URL protocol?
+        $in = \str_replace('://', ':' . X . '//', $in); // Maybe an URL protocol?
         foreach ($lot as $k => $v) {
-            $in = str_replace($v, '<i class="emoticon:' . $k . '"></i>', $in);
+            $in = \str_replace($v, '<i class="emoticon:' . $k . '"></i>', $in);
         }
-        return str_replace(':' . X . '//', '://', $in);
+        return \str_replace(':' . X . '//', '://', $in);
     }
 }
