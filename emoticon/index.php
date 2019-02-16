@@ -12,18 +12,12 @@ namespace fn {
     \Lot::set('_emoticon', $replace);
     function emoticon($content, array $lot = []) {
         $out = "";
-        $skip = 0;
         $replace = \Lot::get('_emoticon');
-        foreach (\preg_split('#(<[^<>]+?>)#', $content, null, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_DELIM_CAPTURE) as $v) {
+        foreach (\preg_split('#(<pre(?:\s[^>]*)?>[\s\S]*?</pre>|<code(?:\s[^>]*)?>[\s\S]*?</code>|<kbd(?:\s[^>]*)?>[\s\S]*?</kbd>|<script(?:\s[^>]*)?>[\s\S]*?</script>|<style(?:\s[^>]*)?>[\s\S]*?</style>|<textarea(?:\s[^>]*)?>[\s\S]*?</textarea>|<[^>]+>)#', $content, null, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_DELIM_CAPTURE) as $v) {
             if ($v && $v[0] === '<' && \substr($v, -1) === '>') {
                 $out .= $v; // Is a HTML tag, skip!
-                if (\preg_match('#^<(?:code|kbd|pre|script|style|textarea)\b#', $v)) {
-                    $skip = 1;
-                } else if ($v[1] === '/') {
-                    $skip = 0;
-                }
             } else {
-                $out .= $skip ? $v : emoticon\replace($v, $replace);
+                $out .= emoticon\replace($v, $replace);
             }
         }
         return $out;
