@@ -1,7 +1,7 @@
 <?php
 
 namespace _ {
-    $state = \Plugin::state('emoticon');
+    $state = \plugin('emoticon');
     $replace = [];
     $i = $state['type'] ?? 0;
     if (!empty($state['replace'])) {
