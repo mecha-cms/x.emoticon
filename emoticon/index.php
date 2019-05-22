@@ -33,10 +33,10 @@ namespace _ {
 
 namespace _\emoticon {
     function replace($in, $lot) {
-        $in = \str_replace('://', ':' . X . '//', $in); // Maybe an URL protocol?
+        $in = \str_replace('://', ':' . P . '//', $in); // Maybe an URL protocol?
         foreach ($lot as $k => $v) {
             $in = \str_replace($v, '<i class="emoticon:' . $k . '"></i>', $in);
         }
-        return \str_replace(':' . X . '//', '://', $in);
+        return \str_replace(':' . P . '//', '://', $in);
     }
 }
