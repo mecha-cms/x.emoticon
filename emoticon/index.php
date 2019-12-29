@@ -1,42 +1,57 @@
-<?php
+<?php namespace _\lot\x;
 
-namespace _ {
-    $state = \plugin('emoticon');
-    $replace = [];
-    $i = $state['type'] ?? 0;
-    if (!empty($state['replace'])) {
-        foreach ($state['replace'] as $k => $v) {
-            $replace[$k . '-' . $i] = \array_merge(\explode(' ', \trim($v)), [':' . $k . ':']);
-        }
+function emoticon($content) {
+    if (!$content) {
+        return $content;
     }
-    $GLOBALS['_emoticon'] = $replace;
-    function emoticon($content, array $lot = []) {
-        $out = "";
-        $replace = $GLOBALS['_emoticon'];
-        foreach (\preg_split('#(<pre(?:\s[^>]*)?>[\s\S]*?</pre>|<code(?:\s[^>]*)?>[\s\S]*?</code>|<kbd(?:\s[^>]*)?>[\s\S]*?</kbd>|<script(?:\s[^>]*)?>[\s\S]*?</script>|<style(?:\s[^>]*)?>[\s\S]*?</style>|<textarea(?:\s[^>]*)?>[\s\S]*?</textarea>|<[^>]+>)#', $content, null, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_DELIM_CAPTURE) as $v) {
-            if ($v && $v[0] === '<' && \substr($v, -1) === '>') {
-                $out .= $v; // Is a HTML tag, skip!
-            } else {
-                $out .= emoticon\replace($v, $replace);
+    $state = (array) \State::get('x.emoticon', true);
+    $i = $state['type'] ?? 0;
+    $any = [];
+    $emoticon = function($in, $any) {
+        foreach ($any as $k => $v) {
+            foreach ($v as $vv) {
+                $in = \strtr($in, [$vv => '<span class="emoticon:' . $k . '"><span>' . $vv . '</span></span>']);
             }
         }
-        return $out;
+        return $in;
+    };
+    if (!empty($state['alter'])) {
+        foreach ($state['alter'] as $k => $v) {
+            $any[$k . '-' . $i] = \array_merge(\array_filter(\explode(' ', \trim($v))), [':' . $k . ':']);
+        }
     }
-    \Hook::set([
-        '*.content',
-        '*.description',
-        '*.title'
-    ], __NAMESPACE__ . "\\emoticon", 2.1);
-    // Load the asset!
-    \Asset::set(__DIR__ . DS . 'lot' . DS . 'asset' . DS . 'css' . DS . 'emoticon.min.css');
+    // Skip parsing process if we are in these HTML element(s)
+    $tags = [
+        'pre' => 1,
+        'code' => 1, // Must come after `pre`
+        'kbd' => 1,
+        'math' => 1,
+        'script' => 1,
+        'style' => 1,
+        'textarea' => 1
+    ];
+    $parts = \preg_split('/(<!--[\s\S]*?-->|' . \implode('|', (function($tags) {
+        foreach ($tags as $k => &$v) {
+            $v = '<' . $k . '(?:\s[^>]*)?>[\s\S]*?<\/' . $k . '>';
+        }
+        return $tags;
+    })($tags)) . '|<[^>\s]+(?:\s[^>]*)?>|https?:\/\/\S+)/', $content, null, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_DELIM_CAPTURE);
+    $out = "";
+    foreach ($parts as $v) {
+        if (0 === \strpos($v, 'http://') || 0 === \strpos($v, 'https://')) {
+            $out .= $v; // Is an URL, skip!
+        } else if ($v && '<' === $v[0] && '>' === \substr($v, -1)) {
+            $out .= $v; // Is a HTML tag or comment, skip!
+        } else {
+            $out .= $emoticon($v, $any);
+        }
+    }
+    return $out;
 }
 
-namespace _\emoticon {
-    function replace($in, $lot) {
-        $in = \str_replace('://', ':' . P . '//', $in); // Maybe an URL protocol?
-        foreach ($lot as $k => $v) {
-            $in = \str_replace($v, '<i class="emoticon:' . $k . '"></i>', $in);
-        }
-        return \str_replace(':' . P . '//', '://', $in);
-    }
-}
+\Asset::set(__DIR__ . \DS . 'lot' . \DS . 'asset' . \DS . 'css' . \DS . 'emoticon.min.css');
+\Hook::set([
+    'page.content',
+    'page.description',
+    'page.title'
+], __NAMESPACE__ . "\\emoticon", 2.1);

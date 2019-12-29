@@ -1,59 +1,173 @@
 @font-face {
-  font-family:'emoticon';
-  src:url('../ttf/emoticon.ttf?v=0') format('truetype'),url('../woff/emoticon.woff?v=0') format('woff'),url('../svg/emoticon.svg?v=0#emoticon') format('svg');
-  font-weight:normal;
-  font-style:normal;
+  font-family: 'emoticon';
+  src: url('../ttf/emoticon.ttf?v=0') format('truetype'),
+       url('../woff/emoticon.woff?v=0') format('woff'),
+       url('../svg/emoticon.svg?v=0#emoticon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
-i[class*="emoticon:"] {
+[class*='emoticon:'] {
   /* Use `!important` to prevent issue(s) with browser extension(s) that change font(s) */
-  font-family:emoticon !important;
-  speak:none;
-  font-style:normal;
-  font-weight:normal;
-  font-variant:normal;
-  text-transform:none;
-  display:inline-block;
-  vertical-align:middle;
-  line-height:1;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  font-family: emoticon !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.emoticon\:happy-0:before {content:"\e9df"}
-.emoticon\:smile-0:before {content:"\e9e1"}
-.emoticon\:tongue-0:before {content:"\e9e3"}
-.emoticon\:sad-0:before {content:"\e9e5"}
-.emoticon\:wink-0:before {content:"\e9e7"}
-.emoticon\:grin-0:before {content:"\e9e9"}
-.emoticon\:cool-0:before {content:"\e9eb"}
-.emoticon\:angry-0:before {content:"\e9ed"}
-.emoticon\:evil-0:before {content:"\e9ef"}
-.emoticon\:shock-0:before {content:"\e9f1"}
-.emoticon\:baffle-0:before {content:"\e9f3"}
-.emoticon\:confuse-0:before {content:"\e9f5"}
-.emoticon\:neutral-0:before {content:"\e9f7"}
-.emoticon\:hipster-0:before {content:"\e9f9"}
-.emoticon\:wonder-0:before {content:"\e9fb"}
-.emoticon\:sleepy-0:before {content:"\e9fd"}
-.emoticon\:frustrate-0:before {content:"\e9ff"}
-.emoticon\:cry-0:before {content:"\ea01"}
+[class*='emoticon:'] span {
+  display: none;
+}
 
-.emoticon\:happy-1:before {content:"\e9e0"}
-.emoticon\:smile-1:before {content:"\e9e2"}
-.emoticon\:tongue-1:before {content:"\e9e4"}
-.emoticon\:sad-1:before {content:"\e9e6"}
-.emoticon\:wink-1:before {content:"\e9e8"}
-.emoticon\:grin-1:before {content:"\e9ea"}
-.emoticon\:cool-1:before {content:"\e9ec"}
-.emoticon\:angry-1:before {content:"\e9ee"}
-.emoticon\:evil-1:before {content:"\e9f0"}
-.emoticon\:shock-1:before {content:"\e9f2"}
-.emoticon\:baffle-1:before {content:"\e9f4"}
-.emoticon\:confuse-1:before {content:"\e9f6"}
-.emoticon\:neutral-1:before {content:"\e9f8"}
-.emoticon\:hipster-1:before {content:"\e9fa"}
-.emoticon\:wonder-1:before {content:"\e9fc"}
-.emoticon\:sleepy-1:before {content:"\e9fe"}
-.emoticon\:frustrate-1:before {content:"\ea00"}
-.emoticon\:cry-1:before {content:"\ea02"}
+.emoticon\:happy-0::before {
+  content: '\e9df';
+}
+
+.emoticon\:smile-0::before {
+  content: '\e9e1';
+}
+
+.emoticon\:tongue-0::before {
+  content: '\e9e3';
+}
+
+.emoticon\:sad-0::before {
+  content: '\e9e5';
+}
+
+.emoticon\:wink-0::before {
+  content: '\e9e7';
+}
+
+.emoticon\:grin-0::before {
+  content: '\e9e9';
+}
+
+.emoticon\:cool-0::before {
+  content: '\e9eb';
+}
+
+.emoticon\:angry-0::before {
+  content: '\e9ed';
+}
+
+.emoticon\:evil-0::before {
+  content: '\e9ef';
+}
+
+.emoticon\:shock-0::before {
+  content: '\e9f1';
+}
+
+.emoticon\:baffle-0::before {
+  content: '\e9f3';
+}
+
+.emoticon\:confuse-0::before {
+  content: '\e9f5';
+}
+
+.emoticon\:neutral-0::before {
+  content: '\e9f7';
+}
+
+.emoticon\:hipster-0::before {
+  content: '\e9f9';
+}
+
+.emoticon\:wonder-0::before {
+  content: '\e9fb';
+}
+
+.emoticon\:sleepy-0::before {
+  content: '\e9fd';
+}
+
+.emoticon\:frustrate-0::before {
+  content: '\e9ff';
+}
+
+.emoticon\:cry-0::before {
+  content: '\ea01';
+}
+
+
+.emoticon\:happy-1::before {
+  content: '\e9e0';
+}
+
+.emoticon\:smile-1::before {
+  content: '\e9e2';
+}
+
+.emoticon\:tongue-1::before {
+  content: '\e9e4';
+}
+
+.emoticon\:sad-1::before {
+  content: '\e9e6';
+}
+
+.emoticon\:wink-1::before {
+  content: '\e9e8';
+}
+
+.emoticon\:grin-1::before {
+  content: '\e9ea';
+}
+
+.emoticon\:cool-1::before {
+  content: '\e9ec';
+}
+
+.emoticon\:angry-1::before {
+  content: '\e9ee';
+}
+
+.emoticon\:evil-1::before {
+  content: '\e9f0';
+}
+
+.emoticon\:shock-1::before {
+  content: '\e9f2';
+}
+
+.emoticon\:baffle-1::before {
+  content: '\e9f4';
+}
+
+.emoticon\:confuse-1::before {
+  content: '\e9f6';
+}
+
+.emoticon\:neutral-1::before {
+  content: '\e9f8';
+}
+
+.emoticon\:hipster-1::before {
+  content: '\e9fa';
+}
+
+.emoticon\:wonder-1::before {
+  content: '\e9fc';
+}
+
+.emoticon\:sleepy-1::before {
+  content: '\e9fe';
+}
+
+.emoticon\:frustrate-1::before {
+  content: '\ea00';
+}
+
+.emoticon\:cry-1::before {
+  content: '\ea02';
+}
+

@@ -1,4 +1,9 @@
-Emoticon Plugin for Mecha
-=========================
+Emoticon Extension for Mecha
+============================
 
-> Emoticon using icon fonts.
+Release Notes
+-------------
+
+### 2.3.1
+
+ - Keep original smiley characters in a hidden HTML elements.
