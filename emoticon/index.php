@@ -9,15 +9,13 @@ function emoticon($content) {
     $any = [];
     $emoticon = function($in, $any) {
         foreach ($any as $k => $v) {
-            foreach ($v as $vv) {
-                $in = \strtr($in, [$vv => '<span class="emoticon:' . $k . '"><span>' . $vv . '</span></span>']);
-            }
+            $in = \preg_replace('/\B(' . $v . ')\B/', '<span class="emoticon:' . $k . '"><span>$1</span></span>', $in);
         }
         return $in;
     };
     if (!empty($state['alter'])) {
         foreach ($state['alter'] as $k => $v) {
-            $any[$k . '-' . $i] = \array_merge(\array_filter(\explode(' ', \trim($v))), [':' . $k . ':']);
+            $any[$k . '-' . $i] = ':' . $k . ':|' . \strtr(\x($v), ' ', '|');
         }
     }
     // Skip parsing process if we are in these HTML element(s)
