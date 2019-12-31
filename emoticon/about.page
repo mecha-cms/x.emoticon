@@ -38,9 +38,9 @@ return [
 ];
 ~~~
 
-Any pattern defined in the array value, plus an `:‌array_key‌:` syntax, will be replaced with `<i class="emoticon:array_key"></i>` element. Any pattern found in the HTML opening tag (as a tag name, attribute name or value) will be ignored. Any pattern found in the HTML contents of `<code>`, `<kbd>`, `<pre>`, `<script>`, `<style>` and `<textarea>` will be ignored.
+Any pattern defined in the array value, plus an `:‌key‌:` syntax, will be replaced with `<span class="emoticon:key"></span>` element. Any pattern found in the HTML opening tag (as a tag name, attribute name or value) will be ignored. Any pattern found in the HTML contents of `<code>`, `<kbd>`, `<pre>`, `<script>`, `<style>` and `<textarea>` will be ignored.
 
-You might also interested with these links:
+You might also like:
 
  - [Wikipedia – List of Emoticons](http://en.wikipedia.org/wiki/List_of_emoticons "List of Emoticons")
  - [All Japanese Emoticons](http://japaneseemoticons.net/all-japanese-emoticons "Over 2,500 Japanese Emoticons All on One Page!")
