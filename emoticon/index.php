@@ -44,7 +44,7 @@ function emoticon($content) {
             $out .= $emoticon($v, $any);
         }
     }
-    return $out;
+    return "" !== $out ? $out : null;
 }
 
 \Asset::set(__DIR__ . \DS . 'lot' . \DS . 'asset' . \DS . 'css' . \DS . 'emoticon.min.css');
