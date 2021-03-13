@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'emoticon';
-  src: url('../ttf/emoticon.ttf?v=0') format('truetype'),
-       url('../woff/emoticon.woff?v=0') format('woff'),
-       url('../svg/emoticon.svg?v=0#emoticon') format('svg');
+  src: url('../ttf/index.ttf?v=0') format('truetype'),
+       url('../woff/index.woff?v=0') format('woff'),
+       url('../svg/index.svg?v=0#emoticon') format('svg');
   font-weight: normal;
   font-style: normal;
 }

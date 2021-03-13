@@ -1,4 +1,4 @@
-<?php namespace _\lot\x;
+<?php namespace x;
 
 function emoticon($content) {
     if (!$content) {
@@ -47,7 +47,8 @@ function emoticon($content) {
     return "" !== $out ? $out : null;
 }
 
-\Asset::set(__DIR__ . \DS . 'lot' . \DS . 'asset' . \DS . 'css' . \DS . 'emoticon.min.css');
+$z = \defined("\\DEBUG") && \DEBUG ? '.' : '.min.';
+\Asset::set(__DIR__ . \DS . 'lot' . \DS . 'asset' . \DS . 'css' . \DS . 'index' . $z . 'css');
 \Hook::set([
     'page.content',
     'page.description',
