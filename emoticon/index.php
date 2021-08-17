@@ -4,8 +4,10 @@ function emoticon($content) {
     if (!$content) {
         return $content;
     }
-    $state = (array) \State::get('x.emoticon', true);
-    $i = $state['type'] ?? 0;
+    extract($GLOBALS, \EXTR_SKIP);
+    $state = $state->x->emoticon ?? [];
+    $i = $state->type ?? 0;
+    $alter = $state->alter ?? [];
     $any = [];
     $emoticon = function($in, $any) {
         foreach ($any as $k => $v) {
@@ -13,8 +15,8 @@ function emoticon($content) {
         }
         return $in;
     };
-    if (!empty($state['alter'])) {
-        foreach ($state['alter'] as $k => $v) {
+    if (!empty($alter)) {
+        foreach ($alter as $k => $v) {
             $any[$k . '-' . $i] = ':' . $k . ':|' . \strtr(\x($v), ' ', '|');
         }
     }
@@ -28,7 +30,7 @@ function emoticon($content) {
         'style' => 1,
         'textarea' => 1
     ];
-    $parts = \preg_split('/(<!--[\s\S]*?-->|' . \implode('|', (function($tags) {
+    $parts = \preg_split('/(<!--[\s\S]*?-->|' . \implode('|', (static function($tags) {
         foreach ($tags as $k => &$v) {
             $v = '<' . $k . '(?:\s[^>]*)?>[\s\S]*?<\/' . $k . '>';
         }
