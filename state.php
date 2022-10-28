@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'type' => 1, // Can be `0` or `1`
+    'type' => 1, // Can be `0` for hollow icon or `1` for solid icon
     // Determine character(s) to be recognized as emoticon(s)
     // Order does matter!
     'alter' => [

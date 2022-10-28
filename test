@@ -1,0 +1,22 @@
+aaa :) aaa
+
+aaa :/ aaa http://example.com
+
+<aaa aaa="aaa :)">aaa</a>
+
+<pre><code>aaa :)</code></pre>
+
+aaa <code>aaa :)</code> aaa
+aaa <kbd>aaa :)</kbd> aaa
+
+<script>
+aaa :)
+</script>
+
+<style>
+aaa :)
+</style>
+
+<textarea>
+aaa :)
+</textarea>

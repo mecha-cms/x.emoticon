@@ -1,1 +1,3 @@
-allow from all
+<Files ~ '[.](css|png|svg|ttf|woff)$'>
+  Allow from all
+</Files>
