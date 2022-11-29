@@ -8,7 +8,8 @@ type: Markdown
 version: 3.0.0
 ...
 
-This extension replaces every emoticon and smiley patterns (which you can also set it yourself) into a graphical emoticon icons. Icon font credit to [Icomoon](http://icomoon.io "IcoMoon – Custom Built and Crisp Icon Fonts").
+This extension replaces every emoticon and smiley patterns (which you can also set it yourself) into a graphical
+emoticon icons. Icon font credit to [Icomoon](http://icomoon.io "IcoMoon – Custom Built and Crisp Icon Fonts").
 
 Open `.\lot\x\emoticon\state.php` file to configure:
 
@@ -40,7 +41,10 @@ return [
 ];
 ~~~
 
-Any pattern defined in the array value, plus a `:key:` syntax, will be replaced with `<span class="emoticon:key"></span>` element. Any pattern found in the HTML opening tag (as a tag name, attribute name or value) will be ignored. Any pattern found in the HTML contents of `<code>`, `<kbd>`, `<pre>`, `<script>`, `<style>` and `<textarea>` will also be ignored.
+Any pattern defined in the array value, plus a `:key:` syntax, will be replaced with
+`<span class="emoticon:key"></span>` element. Any pattern found in the HTML opening tag (as a tag name, attribute name
+or value) will be ignored. Any pattern found in the HTML contents of `<code>`, `<kbd>`, `<pre>`, `<script>`, `<style>`
+and `<textarea>` will also be ignored.
 
 You might also like:
 
