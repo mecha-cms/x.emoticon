@@ -21,7 +21,7 @@ function emoticon($content) {
         }
     }
     // Skip parsing process if we are in these HTML element(s)
-    $parts = \preg_split('/(<!--[\s\S]*?-->|' . \implode('|', (static function ($tags) {
+    $parts = (array) \preg_split('/(<!--[\s\S]*?-->|' . \implode('|', (static function ($tags) {
         foreach ($tags as $k => &$v) {
             $v = '<' . $k . '(?:\s[\p{L}\p{N}_:-]+(?:=(?:"[^"]*"|\'[^\']*\'|[^\/>]*))?)*>(?:(?R)|[\s\S])*?<\/' . $k . '>';
         }
