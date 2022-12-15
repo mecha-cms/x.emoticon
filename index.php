@@ -56,6 +56,6 @@ $z = \defined("\\TEST") && \TEST ? '.' : '.min.';
     'page.title'
 ], __NAMESPACE__ . "\\emoticon", 2.1);
 
-if (\defined("\\TEST") && 'x.emoticon' === \TEST) {
-    require __DIR__ . \D . 'test.php';
+if (\defined("\\TEST") && 'x.emoticon' === \TEST && \is_file($test = __DIR__ . \D . 'test.php')) {
+    require $test;
 }
