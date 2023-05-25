@@ -9,7 +9,7 @@ function emoticon($content) {
     $alter = $state->alter ?? [];
     $type = $state->type ?? 0;
     $any = [];
-    $replace = static function ($content, $any) {
+    $convert = static function (string $content, array $any) {
         foreach ($any as $k => $v) {
             $content = \preg_replace('/\B(' . $v . ')\B/', '<span class="emoticon:' . $k . '"><b>$1</b></span>', $content);
         }
@@ -22,9 +22,10 @@ function emoticon($content) {
     }
     // Skip parsing process if we are in these HTML element(s)
     $parts = (array) \preg_split('/(<!--[\s\S]*?-->|' . \implode('|', (static function ($tags) {
-        foreach ($tags as $k => &$v) {
-            $v = '<' . $k . '(?:\s[\p{L}\p{N}_:-]+(?:=(?:"[^"]*"|\'[^\']*\'|[^\/>]*))?)*>(?:(?R)|[\s\S])*?<\/' . $k . '>';
+        foreach ($tags as $k => &$tag) {
+            $tag = '<' . \x($k) . '(?:\s[\p{L}\p{N}_:-]+(?:=(?:"[^"]*"|\'[^\']*\'|[^\/>]*))?)*>(?:(?R)|[\s\S])*?<\/' . \x($k) . '>';
         }
+        unset($tag);
         return $tags;
     })([
         'pre' => 1,
@@ -35,17 +36,19 @@ function emoticon($content) {
         'style' => 1,
         'textarea' => 1
     ])) . '|<(?:"[^"]*"|\'[^\']*\'|[^>])*>|https?:\/\/\S+)/', $content, -1, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_DELIM_CAPTURE);
-    $out = "";
-    foreach ($parts as $v) {
-        if (0 === \strpos($v, 'http://') || 0 === \strpos($v, 'https://')) {
-            $out .= $v; // Is an URL, skip!
-        } else if ($v && '<' === $v[0] && '>' === \substr($v, -1)) {
-            $out .= $v; // Is a HTML tag or comment, skip!
-        } else {
-            $out .= $replace($v, $any);
+    $content = "";
+    foreach ($parts as $part) {
+        if (0 === \strpos($part, 'http://') || 0 === \strpos($part, 'https://')) {
+            $content .= $part; // Is an URL, skip!
+            continue;
         }
+        if ($part && '<' === $part[0] && '>' === \substr($part, -1)) {
+            $content .= $part; // Is a HTML tag or comment, skip!
+            continue;
+        }
+        $content .= $convert($part, $any);
     }
-    return "" !== $out ? $out : null;
+    return "" !== $content ? $content : null;
 }
 
 $z = \defined("\\TEST") && \TEST ? '.' : '.min.';
