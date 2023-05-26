@@ -1,22 +1,22 @@
-aaa :) aaa
+asdf :) asdf
 
-aaa :/ aaa http://example.com
+asdf :/ asdf http://example.com
 
-<aaa aaa="aaa :)">aaa</a>
+<asdf asdf="asdf :)">asdf</a>
 
-<pre><code>aaa :)</code></pre>
+<pre><code>asdf :)</code></pre>
 
-aaa <code>aaa :)</code> aaa
-aaa <kbd>aaa :)</kbd> aaa
+asdf <code>asdf :)</code> asdf
+asdf <kbd>asdf :)</kbd> asdf
 
 <script>
-aaa :)
+asdf :)
 </script>
 
 <style>
-aaa :)
+asdf :)
 </style>
 
 <textarea>
-aaa :)
+asdf :)
 </textarea>
