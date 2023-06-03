@@ -25,12 +25,12 @@ namespace x {
             }
         }
         // Skip parsing process if we are in these HTML element(s)
-        $parts = (array) \preg_split('/(<!--[\s\S]*?-->|' . \implode('|', (static function ($tags) {
-            foreach ($tags as $k => &$tag) {
-                $tag = '<' . \x($k) . '(?:\s[\p{L}\p{N}_:-]+(?:=(?:"[^"]*"|\'[^\']*\'|[^\/>]*))?)*>(?:(?R)|[\s\S])*?<\/' . \x($k) . '>';
+        $parts = (array) \preg_split('/(<!--[\s\S]*?-->|' . \implode('|', (static function ($parts) {
+            foreach ($parts as $k => &$v) {
+                $v = '<' . \x($k) . '(?:\s[\p{L}\p{N}_:-]+(?:=(?:"[^"]*"|\'[^\']*\'|[^\/>]*))?)*>(?:(?R)|[\s\S])*?<\/' . \x($k) . '>';
             }
-            unset($tag);
-            return $tags;
+            unset($v);
+            return $parts;
         })([
             'pre' => 1,
             'code' => 1, // Must come after `pre`
