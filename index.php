@@ -39,7 +39,7 @@ namespace x {
             'script' => 1,
             'style' => 1,
             'textarea' => 1
-        ])) . '|<(?:"[^"]*"|\'[^\']*\'|[^>])*>|https?:\/\/\S+)/', $content, -1, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_DELIM_CAPTURE);
+        ])) . '|<(?:"[^"]*"|\'[^\']*\'|[^>]+)*>|https?:\/\/\S+)/', $content, -1, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_DELIM_CAPTURE);
         $content = "";
         foreach ($parts as $part) {
             if (0 === \strpos($part, 'http://') || 0 === \strpos($part, 'https://')) {
