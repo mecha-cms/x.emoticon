@@ -1,16 +1,7 @@
 <?php
 
-namespace x\emoticon {
-    function from(string $content, array $any) {
-        foreach ($any as $k => $v) {
-            $content = \preg_replace('/\B(' . $v . ')\B/', '<span class="emoticon:' . $k . '"><b>$1</b></span>', $content);
-        }
-        return $content;
-    }
-}
-
-namespace x {
-    function emoticon($content) {
+namespace x\emoticon\page {
+    function content($content) {
         if (!$content) {
             return $content;
         }
@@ -54,11 +45,24 @@ namespace x {
         }
         return "" !== $content ? $content : null;
     }
-    \Hook::set([
-        'page.content',
-        'page.description',
-        'page.title'
-    ], __NAMESPACE__ . "\\emoticon", 2.1);
+    function description($description) {
+        return \fire(__NAMESPACE__ . "\\content", [$description], $this);
+    }
+    function title($title) {
+        return \fire(__NAMESPACE__ . "\\content", [$title], $this);
+    }
+    \Hook::set('page.content', __NAMESPACE__ . "\\content", 2.1);
+    \Hook::set('page.description', __NAMESPACE__ . "\\description", 2.1);
+    \Hook::set('page.title', __NAMESPACE__ . "\\title", 2.1);
+}
+
+namespace x\emoticon {
+    function from(string $content, array $any) {
+        foreach ($any as $k => $v) {
+            $content = \preg_replace('/\B(' . $v . ')\B/', '<span class="emoticon:' . $k . '"><b>$1</b></span>', $content);
+        }
+        return $content;
+    }
 }
 
 namespace {
