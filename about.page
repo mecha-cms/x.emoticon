@@ -15,8 +15,6 @@ emoticon icons. Icon font credit to [Icomoon](http://icomoon.io "IcoMoon – Cus
 Open `.\lot\x\emoticon\state.php` file to configure:
 
 ~~~ .php
-<?php
-
 return [
     'type' => 1, // Can be `0` for hollow icon or `1` for solid icon
     // Determine character(s) to be recognized as emoticon(s)
