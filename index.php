@@ -11,7 +11,7 @@ function page__content($content) {
     if (!$content) {
         return $content;
     }
-    \extract($GLOBALS, \EXTR_SKIP);
+    \extract(\lot(), \EXTR_SKIP);
     $state = $state->x->emoticon ?? [];
     $alter = $state->alter ?? [];
     $type = $state->type ?? 0;

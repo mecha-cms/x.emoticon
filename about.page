@@ -6,7 +6,7 @@ color: '#f4bc1a'
 author: Taufik Nurrohman
 image: /lot/x/emoticon/index.png
 type: Markdown
-version: 3.0.0
+version: 3.0.1
 ...
 
 This extension replaces every emoticon and smiley patterns (which you can also set it yourself) into a graphical
