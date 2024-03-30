@@ -21,7 +21,8 @@
 }
 
 [class*='emoticon:'] b {
-  display: none;
+  font: 0/0 a;
+  text-shadow: none;
 }
 
 .emoticon\:happy-0::before {
